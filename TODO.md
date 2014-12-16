@@ -1,8 +1,8 @@
 # TODO
 * Update install script to install start/stop download scripts
 * Update install script to install new cron job
-* Update install script to install monit, unattended upgrades, and smart monitor
-* Update install script to fix pid files
+* Update install script to fix pid file folders
+* smartmontools configuration
 * Update install script to install monit configuration
 * Update install scripts to install scripts
 * Add steam launcher setup, (when we get it working)
