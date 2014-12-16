@@ -1,0 +1,26 @@
+# defaults for transmission-daemon
+# sourced by /etc/init.d/transmission-daemon
+
+# Change to 0 to disable daemon
+ENABLE_DAEMON=1
+
+# This directory stores some runtime information, like torrent files 
+# and links to the config file, which itself can be found in 
+# /etc/transmission-daemon/settings.json
+USER="blondebeard"
+CONFIG_DIR="/home/$USER/.config/transmission-daemon" 
+
+
+# Pid stuff
+PIDDIR="/var/run/transmission-daemon"
+PIDFILE="$PIDDIR/transmission-daemon.pid"
+if [ ! -d "$PIDDIR" ]; then
+	sudo mkdir "$PIDDIR"
+fi
+sudo chown "$USER":"$USER" "$PIDDIR"
+
+# Default options for daemon, see transmission-daemon(1) for more options
+OPTIONS="--config-dir $CONFIG_DIR --pid-file $PIDFILE --logfile /var/log/transmission/transmission.log"
+
+# (optional) extra options to start-stop-daemon
+#START_STOP_OPTIONS="--iosched idle --nicelevel 10"

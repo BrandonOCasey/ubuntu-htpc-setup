@@ -1,0 +1,4 @@
+# Sym Link This FILE TO /etc/default/headphones
+	HP_HOME=/home/blondebeard/.programs/headphones
+	HP_DATA=/home/blondebeard/.programs/headphones
+	HP_USER=blondebeard

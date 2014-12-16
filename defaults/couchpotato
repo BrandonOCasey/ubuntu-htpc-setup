@@ -1,0 +1,4 @@
+# Sym Link This FILE TO /etc/default/couchpotato
+	CP_HOME=/home/blondebeard/.programs/CouchPotatoServer
+	CP_DATA=/home/blondebeard/.programs/CouchPotatoServer
+	CP_USER=blondebeard
