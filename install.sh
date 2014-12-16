@@ -8,7 +8,6 @@ if [ ! -d "$programs" ]; then
         mkdir "$programs"
 fi
 
-
 function add_repo() {
         sudo add-apt-repository "$1" -y
 }
@@ -48,12 +47,18 @@ function install_program() {
 
 echo "Downloading Extra Addons"
 cd ~/Downloads
-sudo wget http://srp.nu/gotham/all/repository.superrepo.org.gotham.all-latest.zip
+sudo wget http://srp.nu/gotham/all/repository.superrepo.org.gotham.all-latest.zip -q
 
 
-echo "Adding Play Deb Repo (for StepMania)"
-sudo wget http://archive.getdeb.net/install_deb/playdeb_0.3-1~getdeb1_all.deb
-sudo dpkg -i playdeb_0.3-1~getdeb1_all.deb
+echo "Installing PPA Repos"
+add_repo "ppa:glennric/dolphin-emu"
+add_repo "ppa:gregory-hainaut/pcsx2.official.ppa"
+add_repo "ppa:falk-t-j/qtsixa"
+add_repo "ppa:hunter-kaller/ppa"
+add_repo "ppa:transmissionbt/ppa"
+sudo wget http://archive.getdeb.net/install_deb/playdeb_0.3-1~getdeb1_all.deb -q
+$(sudo dpkg -i playdeb_0.3-1~getdeb1_all.deb)
+rm playdeb*
 
 echo "Downloading Private Internet Access"
 mkdir ~/.pia
@@ -62,12 +67,6 @@ sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
 sudo unzip openvpn.zip
 sudo rm openvpn.zip
 
-echo "Installing Repos"
-add_repo "ppa:glennric/dolphin-emu"
-add_repo "ppa:gregory-hainaut/pcsx2.official.ppa"
-add_repo "ppa:falk-t-j/qtsixa"
-add_repo "ppa:hunter-kaller/ppa"
-add_repo "ppa:transmissionbt/ppa"
 
 echo "Installing and updating"
 sudo apt-get update
