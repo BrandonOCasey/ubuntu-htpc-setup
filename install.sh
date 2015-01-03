@@ -2,15 +2,23 @@
 set -e
 
 # Setup
-PROGRAM_DIR="/opt"
-BIN_DIR="$HOME/bin"
+readonly repos="
+ppa:glennric/dolphin-emu
+ppa:gregory-hainaut/pcsx2.official.ppa
+ppa:falk-t-j/qtsixa
+ppa:hunter-kaller/ppa
+ppa:transmissionbt/ppa
+ppa:emulationstation/ppa
+"
+readonly programs="
+"
+
+readonly PROGRAM_DIR="/opt"
+readonly BIN_DIR="$HOME/bin"
 if [ ! -d "$programs" ]; then
         mkdir "$programs"
 fi
 
-function add_repo() {
-        sudo add-apt-repository "$1" -y
-}
 function install_program() {
         local name="$1"; shift
         local url="$1"; shift
@@ -51,11 +59,13 @@ sudo wget http://srp.nu/gotham/all/repository.superrepo.org.gotham.all-latest.zi
 
 
 echo "Installing PPA Repos"
-add_repo "ppa:glennric/dolphin-emu"
-add_repo "ppa:gregory-hainaut/pcsx2.official.ppa"
-add_repo "ppa:falk-t-j/qtsixa"
-add_repo "ppa:hunter-kaller/ppa"
-add_repo "ppa:transmissionbt/ppa"
+while read -r repo; do
+	if [ -n "$repo" ]; then
+	       sudo add-apt-repository "$repo" -y
+	fi
+done <<< "$repos"
+
+add_repo "ppa:emulationstation/ppa"
 sudo wget http://archive.getdeb.net/install_deb/playdeb_0.3-1~getdeb1_all.deb -q
 $(sudo dpkg -i playdeb_0.3-1~getdeb1_all.deb)
 rm playdeb*
@@ -74,7 +84,7 @@ sudo apt-get install -y sm-ssc qtsixa bluez openvpn network-manager-openvpn \
 network-manager-openvpn-gnome vim wicd-curses openssh-server terminator dolphin-emu pcsx2 \
 retroarch libretro* git zenity transmission wmctrl python-setuptools python-cheetah \
 unrar transmission-cli transmission-daemon jmtpfs smartmontools unattended-upgrades \
-apache2 php5 transmission-common monit
+apache2 php5 transmission-common monit emulationstation
 sudo apt-get install -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
