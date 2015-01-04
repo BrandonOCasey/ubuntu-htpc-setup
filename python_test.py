@@ -19,14 +19,14 @@ class StaticVariables:
 	group_id = grp.getgrnam(group).gr_gid
 	repos = [
 		"ppa:glennric/dolphin-emu", "ppa:gregory-hainaut/pcsx2.official.ppa", "ppa:falk-t-j/qtsixa",
-		"ppa:hunter-kaller/ppa", "ppa:transmissionbt/ppa", "ppa:emulationstation/ppa", 
+		"ppa:hunter-kaller/ppa", "ppa:transmissionbt/ppa", "ppa:emulationstation/ppa", "ppa:vidplace7/bluez5"
 	]
 	programs = [
 		"sm-ssc", "qtsixa", "bluez", "openvpn",	"network-manager-openvpn", "network-manager-openvpn-gnome", 
 		"vim", "wicd-curses", "openssh-server", "terminator", "dolphin-emu", "retroarch", "libretro*",
 		"git", "zenity", "transmision", "wmctrl", "python-setuptools", "python-cheetah", "unrar",
 		"transmission-cli", "pcsx2", "transmission-daemon", "jmtpfs", "smartmontools", "unattended-upgrades",
-		"apache2", "php5", "transmission-common", "monit", "emulationstation", "steam"
+		"apache2", "php5", "transmission-common", "monit", "emulationstation", "steam", "bluez-tools"
 	]
 	
 	directories = {
