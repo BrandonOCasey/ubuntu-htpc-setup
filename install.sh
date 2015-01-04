@@ -89,11 +89,6 @@ sudo apt-get install -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
-echo "Installing Steam"
-sudo wget http://media.steampowered.com/client/installer/steam.deb
-sudo dpkg -i steam.deb
-rm steam.deb
-
 
 install_program "sickbeard" "https://github.com/SiCKRAGETV/SickRage" "SB" "init.ubuntu"
 cp "$programs"/SickRage/autoProcessTV/autoProcessTV.cfg.sample "$programs/SickRage"/autoProcessTV/autoProcessTV.cfg

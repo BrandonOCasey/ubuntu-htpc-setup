@@ -1,0 +1,6 @@
+# http://superuser.com/a/64970
+# /etc/udev/rules.d/local.rules 
+# /etc/udev/rules.d/89-local.rules
+# ADD rule: if we have a valid ID_FS_LABEL_ENC, and it's USB, mkdir and mount
+ENV{ID_FS_LABEL_ENC}=="?*",   ACTION=="add",      SUBSYSTEMS=="usb", \
+         RUN+="/usr/local/sbin/udev-automounter.sh %k",      OWNER="blondebeard"
