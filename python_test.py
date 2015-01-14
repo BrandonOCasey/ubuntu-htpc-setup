@@ -6,7 +6,7 @@ import grp
 
 #cache = apt.cache.Cache()
 
-
+sudo apt-get install cmake sudo apt-get install g++-arm-linux-gnueabi
 
 """
 All of the static variables & configuration for our program
